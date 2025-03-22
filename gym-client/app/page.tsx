@@ -19,8 +19,8 @@ export default function Home() {
       <Membership />
       <Testimonial />
       <Blog />
-      <Brands />
-      {/* <div className="h-[3000px]"></div> */}
+      <Brands /> 
+      {/* <div className="h-[3000px]"></div>  */}
     </main>
   );
 }

@@ -26,7 +26,7 @@ const Header = () => {
         }
     }, [])
   return (
-    <header className={`${headerActive ? 'h-[100px]' : 'h-[124px]'} fixed max-w-[1920px] top-0 w-full bg-primary-200 h-[100px] transition-all z-50`}>
+    <header className={`${headerActive ? 'h-[100px]' : 'h-[124px]'} sticky max-w-[1920px] top-0 w-full bg-primary-200 h-[100px] transition-all`}>
         <div className="container mx-auto h-full flex items-center justify-between">
             {/* logo */}
             <Link href=''>

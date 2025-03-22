@@ -1,4 +1,3 @@
-import axios from "axios";
 import { toast } from "react-toastify";
 import SummaryApi from "./SummaryApi";
 
@@ -19,9 +18,10 @@ async function fetchUserDetails() {
 
         
     } catch (err) {
+        console.log("🚀 ~ fetchUserDetails ~ err:", err);
         toast.error("Error fetching user details!")
         
     }   
 }
 
-fetchUserDetails()
+export default fetchUserDetails;

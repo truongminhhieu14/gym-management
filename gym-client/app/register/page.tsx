@@ -4,8 +4,8 @@ import React, { ChangeEvent, FormEvent, useState } from "react";
 import Link from "next/link";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { toast } from "react-toastify";
-import { useRouter } from "next/router";
 import SummaryApi from "@/services/SummaryApi";
+import { useRouter } from "next/navigation";
 
 interface RegisterData {
   name: string;

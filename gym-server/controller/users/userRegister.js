@@ -1,6 +1,7 @@
 const userModel = require('../../models/userModel');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
+const USER_ROLE = require('../../constants/userRole');
 async function userRegisterController(req,res) {
     try {
         const { name, email, password } = req.body;
@@ -28,7 +29,7 @@ async function userRegisterController(req,res) {
 
         const payload = {
             ...req.body,
-            role: "USER",
+            role: USER_ROLE.MEMBER,
             password : hashedPassword
         }
         const newUser = new userModel(payload);
@@ -36,7 +37,7 @@ async function userRegisterController(req,res) {
 
         const token = jwt.sign({ userId: newUser._id }, process.env.JWT_SECRET, {expiresIn: 60 * 60 * 8});
         
-        res.status(201).json({message: "User registered successfully", token});
+        res.status(201).json({message: "User registered successfully", token, success: true, error: false});
     } catch (err) {
         res.json({
             message : err.message || err,

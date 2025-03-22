@@ -1,4 +1,7 @@
+"use client";
+
 import SummaryApi from "@/services/SummaryApi";
+import fetchUserDetails from "@/services/userService";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import React, { ChangeEvent, FormEvent, useState } from "react";
@@ -38,7 +41,9 @@ const Login: React.FC = () => {
     });
     const dataApi = await dataResponse.json();
 
+    const userDetails = await fetchUserDetails();
     if (dataApi.success) {
+      console.log("🚀 ~ handleSubmit ~ userDetails:", userDetails);
       toast.success(dataApi.message);
       router.push("/");
     }
@@ -101,7 +106,7 @@ const Login: React.FC = () => {
             </button>
           </form>
           <p className="my-5">
-            Don't have account ?{" "}
+            Don&apos;t have account ?{" "}
             <Link
               href={"/register"}
               className=" text-red-600 hover:text-red-700 hover:underline"

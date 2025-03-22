@@ -3,6 +3,7 @@ import { Oswald, Roboto } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import { ToastContainer } from "react-toastify";
 
 const oswald = Oswald({
   variable: "--font-oswald",
@@ -31,6 +32,7 @@ export default function RootLayout({
       <body
         className={`${oswald.variable} ${roboto.variable} w-full max-w[1920px] mx-auto bg-white antialiased`}
       >
+        <ToastContainer />
         <Header />
         {children}
         <Footer />
