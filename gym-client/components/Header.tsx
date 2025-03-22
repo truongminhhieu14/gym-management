@@ -42,7 +42,7 @@ const Header = () => {
             <div className='flex items-center gap-4'>
                 {/* login & register */}
                 <div className='text-white flex items-center gap-4'>
-                    <button className='hover:text-accent transition-all test-base uppercase font-medium '>Login</button>
+                    <button onClick={() => router.push('/login')} className='hover:text-accent transition-all test-base uppercase font-medium '>Login</button>
                     <button onClick={() => router.push('/register')} className='hover:text-accent transition-all test-base uppercase font-medium'>Register</button>
                 </div>
                 <button onClick={() => setOpenNav(!openNav)} className='text-white xl:hidden'>

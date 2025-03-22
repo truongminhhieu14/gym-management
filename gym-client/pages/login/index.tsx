@@ -2,52 +2,51 @@ import SummaryApi from "@/services/SummaryApi";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import React, { ChangeEvent, FormEvent, useState } from "react";
-import { FaEye, FaEyeSlash} from "react-icons/fa"
+import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { toast } from "react-toastify";
 
-
 interface LoginData {
-    email: string,
-    password: string
+  email: string;
+  password: string;
 }
 
-const Login = () => {
-    const [showPassword, setShowPassword] = useState(false)
-    const [data, setData] = useState<LoginData>({
-        email: "",
-        password: ""
-    })
-    const router = useRouter()
-    const handleOnChange = (e: ChangeEvent<HTMLInputElement>) => {
-        const {name, value} = e.target
-        setData((prev) => ({
-            ...prev,
-            [name]: value,
-        }))
+const Login: React.FC = () => {
+  const [showPassword, setShowPassword] = useState(false);
+  const [data, setData] = useState<LoginData>({
+    email: "",
+    password: "",
+  });
+  const router = useRouter();
+  const handleOnChange = (e: ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
+    setData((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
+
+  const handleSubmit = async (e: FormEvent) => {
+    e.preventDefault();
+
+    const dataResponse = await fetch(SummaryApi.signIn.url, {
+      method: SummaryApi.signIn.method,
+      credentials: "include",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    });
+    const dataApi = await dataResponse.json();
+
+    if (dataApi.success) {
+      toast.success(dataApi.message);
+      router.push("/");
     }
-
-    const handleSubmit = async (e: FormEvent) => {
-        e.preventDefault();
-    
-          const dataResponse = await fetch(SummaryApi.signIn.url, {
-            method: SummaryApi.signIn.method,
-            credentials: "include",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify(data),
-          });
-          const dataApi = await dataResponse.json()
-
-          if(dataApi.success) {
-            toast.success(dataApi.message)
-            router.push('/')
-          }
-          if(dataApi.error) {
-            toast.error(dataApi.message)
-          }
-        }
-        console.log('data login', data)
+    if (dataApi.error) {
+      toast.error(dataApi.message);
+    }
+  };
+  console.log("data login", data);
   return (
     <section id="login">
       <div className="mx-auto container p-4">
@@ -104,7 +103,7 @@ const Login = () => {
           <p className="my-5">
             Don't have account ?{" "}
             <Link
-              href={"/sign-up"}
+              href={"/register"}
               className=" text-red-600 hover:text-red-700 hover:underline"
             >
               Sign up

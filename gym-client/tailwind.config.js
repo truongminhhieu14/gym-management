@@ -21,7 +21,7 @@ module.exports = {
       roboto: 'var(--font-roboto)',
     },
     backgroundImage: {
-      hero: 'url(/assets/assets/img/hero/bg1.jpg)',
+      hero: 'url(/assets/assets/img/hero/bg2.jpg)',
       membership: 'url(/assets/assets/img/membership/bg1.jpg)'
     },
 

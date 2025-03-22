@@ -1,3 +1,5 @@
+"use client";
+
 import React, { ChangeEvent, FormEvent, useState } from "react";
 import Link from "next/link";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
@@ -41,9 +43,8 @@ const Register = () => {
       } else {
         toast.error(dataApi.message);
       }
-
-    }else{
-        toast.error("Please check password and confirm password")
+    } else {
+      toast.error("Please check password and confirm password");
     }
   };
   return (
@@ -129,7 +130,6 @@ const Register = () => {
 
             {/* Register Button */}
             <button
-
               type="submit"
               className="bg-slate-950 hover:bg-slate-800 text-white px-6 py-2 w-full max-w-[150px] rounded-full hover:scale-110 transition-all mx-auto block mt-6"
             >
